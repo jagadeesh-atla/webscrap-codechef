@@ -5,7 +5,7 @@ function problems(links, num) {
     for (i = 0, k = 1; i < links.length; i++) {
         const link = links[i];
         if (link.includes('/status')) {
-            const str = link.replace('status/', '-');
+            const str = link.replace('https://www.codechef.com/', '').replace('status/', '-');
             temp = str.substring(0, str.indexOf('/'));
             const contest = (temp == '') ? 'PRACTICE' : temp;
             const code = str.substring(str.indexOf('-') + 1, str.indexOf(','));
@@ -15,7 +15,7 @@ function problems(links, num) {
         }
         else {
             if (link.includes('/problems')) {
-                const str = link.replace('/problems/', '-');
+                const str = link.replace('https://www.codechef.com/', '').replace('/problems/', '-');
                 temp = str.substring(0, str.indexOf('-'));
                 const contest = (temp == '' || temp == 'practice') ? 'PRACTICE' : temp;
                 temp = str.substring(str.indexOf('-') + 1);
