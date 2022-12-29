@@ -4,9 +4,9 @@ const fs = require('fs');
 const clean = require('./cleaner');
 const url = require('url');
 
-function run(handel, res) {
+function run(handle, res) {
     const base = 'https://www.codechef.com/';
-    const link = base + 'users/' + handel;
+    const link = base + 'users/' + handle;
     const data = {};
     axios(link)
         .then(response => {
@@ -49,6 +49,7 @@ function run(handel, res) {
 
                     res.status(200).json(data);
                 }
+
                 // console.log(data);
                 // fs.writeFile('data.json', JSON.stringify(data, null, 4), (err) => { if (err) throw err; });
             })

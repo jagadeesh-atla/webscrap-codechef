@@ -1,23 +1,25 @@
 const port = process.env.PORT || 3000;
 const express = require('express');
-const fs = require('fs');
-const axios = require('axios');
-const cheerio = require('cheerio');
-const clean = require('./cleaner');
 const { run } = require('./scrapper');
 
 const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(express.static(__dirname + '/src'));
 
 app.get('/', (req, res) => {
-    res.send('Hi');
+    res.send('index');
 });
 
-app.get('/:handel', (req, res) => {
-    const handel = req.params.handel.trim();
-    run(handel, res);
+app.post("/:handle", (req, res) => {
+    handle = req.body.username;
+    run(handle, res);
+});
+
+app.get('/:handle', (req, res) => {
+    const handle = req.params.handle.trim();
+    run(handle, res);
 });
 
 app.listen(port, () => { console.log(`listens at ${port}`); });
