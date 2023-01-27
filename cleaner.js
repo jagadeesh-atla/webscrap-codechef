@@ -8,7 +8,7 @@ function problems(links, num) {
             const str = link.replace('https://www.codechef.com/', '').replace('status/', '-');
             temp = str.substring(0, str.indexOf('/'));
             const contest = (temp == '') ? 'PRACTICE' : temp;
-            const code = str.substring(str.indexOf('-') + 1, str.indexOf(','));
+            const code = str.substring(str.indexOf('-') + 1, str.indexOf('?'));
             const type = 'solved';
 
             newLink.push({ type: type, contest: contest, problem: code });
